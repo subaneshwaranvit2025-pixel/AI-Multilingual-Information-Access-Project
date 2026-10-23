@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LinguaBridge | AI Multilingual Information Access</title>
+<style>
+:root{--bg:#f5f7ff;--ink:#17203b;--muted:#68718b;--purple:#6558e8;--purple2:#8b5cf6;--line:#e3e7f2;--white:#fff;--green:#12805c}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:radial-gradient(circle at 15% 0%,#ece9ff 0,transparent 32%),radial-gradient(circle at 95% 10%,#dff7f3 0,transparent 26%),var(--bg);min-height:100vh}
+.wrap{max-width:1120px;margin:auto;padding:24px 22px 40px}.top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:58px}.brand{display:flex;align-items:center;gap:11px;font-weight:800;font-size:19px;letter-spacing:-.4px}.logo{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,var(--purple),#9b6dff);display:grid;place-items:center;color:#fff;box-shadow:0 8px 22px #6558e83b}.pill{border:1px solid #d8d9f5;background:#ffffffa8;padding:9px 13px;border-radius:99px;color:#5549c6;font-size:12px;font-weight:700}
+.hero{text-align:center;max-width:760px;margin:0 auto 36px}.eyebrow{display:inline-flex;align-items:center;gap:8px;color:#5d50d6;font-size:12px;letter-spacing:1.3px;text-transform:uppercase;font-weight:800;background:#eeecff;padding:8px 13px;border-radius:99px}.dot{width:7px;height:7px;border-radius:50%;background:#28b987}.hero h1{font-size:clamp(34px,5vw,56px);line-height:1.08;letter-spacing:-2px;margin:18px 0 16px}.gradient{background:linear-gradient(90deg,#5c50dc,#9b5de5);-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{color:var(--muted);font-size:16px;line-height:1.7;margin:0 auto;max-width:620px}
+.translator{background:#ffffffd9;border:1px solid #e2e5f2;border-radius:25px;padding:20px;box-shadow:0 22px 70px #303f7710;backdrop-filter:blur(12px)}.langbar{display:grid;grid-template-columns:1fr 54px 1fr;align-items:center;gap:12px;margin-bottom:16px}.langselect{display:flex;align-items:center;gap:10px;background:#f8f9ff;border:1px solid var(--line);border-radius:13px;padding:0 13px}.langselect label{font-size:11px;color:#8b92a8;display:block;padding-top:9px}.langselect select{width:100%;border:0;background:transparent;color:var(--ink);font:600 14px inherit;padding:5px 0 10px;outline:none}.langselect .flag{font-size:23px}.swap{height:44px;width:44px;border:1px solid var(--line);border-radius:13px;background:#fff;color:#6558e8;font-size:21px;cursor:pointer;transition:.2s}.swap:hover{transform:rotate(180deg);background:#f0eeff}
+.panels{display:grid;grid-template-columns:1fr 1fr;gap:14px}.panel{border:1px solid var(--line);border-radius:17px;overflow:hidden;background:#fff;min-width:0}.panelhead{display:flex;justify-content:space-between;align-items:center;padding:13px 15px;border-bottom:1px solid #edf0f7;color:#777f98;font-size:12px;font-weight:700}.panel textarea{display:block;width:100%;height:205px;resize:vertical;border:0;outline:none;padding:17px;font:15px/1.65 inherit;color:var(--ink);background:transparent}.panel textarea::placeholder{color:#a8aec0}.output{height:205px;overflow:auto;padding:17px;font-size:15px;line-height:1.65;white-space:pre-wrap;overflow-wrap:anywhere;color:#27304d}.output.empty{color:#a8aec0}.small-action{border:0;background:transparent;color:#777f98;cursor:pointer;font-size:12px;padding:3px}.small-action:hover{color:var(--purple)}.bottomrow{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:17px;flex-wrap:wrap}.hint{font-size:12px;color:#8a91a6}.actions{display:flex;gap:10px;align-items:center}.btn{border:0;border-radius:12px;padding:13px 19px;font-weight:750;font-size:14px;cursor:pointer;transition:.2s}.btn-secondary{background:#f1f2fb;color:#545d7a}.btn-primary{color:#fff;background:linear-gradient(100deg,#6558e8,#8757e9);box-shadow:0 8px 20px #6558e833;min-width:145px}.btn:hover{transform:translateY(-1px)}.btn:disabled{opacity:.6;cursor:wait;transform:none}.status{font-size:12px;color:var(--green);min-height:18px;margin-top:12px}.below{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:22px}.feature{padding:18px;background:#ffffff9c;border:1px solid #e6e9f4;border-radius:17px}.featureicon{width:36px;height:36px;border-radius:11px;background:#eeecff;display:grid;place-items:center;font-size:18px;margin-bottom:12px}.feature h3{margin:0 0 6px;font-size:14px}.feature p{margin:0;color:var(--muted);font-size:12px;line-height:1.6}.footer{text-align:center;color:#9299ad;font-size:12px;margin-top:32px;line-height:1.7}.footer a{color:#6659d8;text-decoration:none}
+@media(max-width:700px){.wrap{padding:17px 13px 28px}.top{margin-bottom:40px}.pill{display:none}.hero{margin-bottom:25px}.hero h1{letter-spacing:-1.2px}.translator{padding:12px;border-radius:20px}.langbar{grid-template-columns:1fr 42px 1fr;gap:7px}.langselect{gap:6px;padding:0 8px}.langselect .flag{font-size:19px}.langselect select{font-size:12px}.swap{width:40px;height:40px}.panels{grid-template-columns:1fr}.panel textarea,.output{height:150px}.below{grid-template-columns:1fr}.bottomrow{align-items:stretch}.actions{width:100%}.actions .btn{flex:1}.hint{width:100%}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top"><div class="brand"><div class="logo">文</div><span>LinguaBridge</span></div><div class="pill">✦ AI MULTILINGUAL ACCESS</div></header>
+<section class="hero">
+<div class="eyebrow"><span class="dot"></span> Language without barriers</div>
+<h1>Every language.<br><span class="gradient">One connection.</span></h1>
+<p>Translate your words and make information accessible across languages. Simple, fast, and designed for everyone.</p>
+</section>
+<main class="translator" aria-label="Translation tool">
+<div class="langbar">
+<div class="langselect"><span class="flag" id="flagFrom">🇬🇧</span><div style="flex:1;min-width:0"><label for="fromLang">TRANSLATE FROM</label><select id="fromLang">
+<option value="en" selected>English</option><option value="ta">Tamil</option><option value="hi">Hindi</option><option value="te">Telugu</option><option value="ml">Malayalam</option><option value="kn">Kannada</option><option value="bn">Bengali</option><option value="fr">French</option><option value="es">Spanish</option><option value="de">German</option><option value="it">Italian</option><option value="pt">Portuguese</option><option value="ar">Arabic</option><option value="ja">Japanese</option><option value="zh">Chinese</option><option value="ru">Russian</option>
+</select></div></div>
+<button class="swap" id="swapBtn" title="Swap languages" aria-label="Swap languages">⇄</button>
+<div class="langselect"><span class="flag" id="flagTo">🇮🇳</span><div style="flex:1;min-width:0"><label for="toLang">TRANSLATE TO</label><select id="toLang">
+<option value="ta" selected>Tamil</option><option value="en">English</option><option value="hi">Hindi</option><option value="te">Telugu</option><option value="ml">Malayalam</option><option value="kn">Kannada</option><option value="bn">Bengali</option><option value="fr">French</option><option value="es">Spanish</option><option value="de">German</option><option value="it">Italian</option><option value="pt">Portuguese</option><option value="ar">Arabic</option><option value="ja">Japanese</option><option value="zh">Chinese</option><option value="ru">Russian</option>
+</select></div></div>
+</div>
+<div class="panels">
+<section class="panel"><div class="panelhead"><span>Your text</span><button class="small-action" id="clearBtn">Clear</button></div><textarea id="sourceText" maxlength="4500" placeholder="Type or paste text here…">Hello! Welcome to my multilingual information access project.</textarea><div class="panelhead" style="border-top:1px solid #edf0f7;border-bottom:0"><span id="charCount">58 / 4500 characters</span><button class="small-action" id="sampleBtn">Try sample ↗</button></div></section>
+<section class="panel"><div class="panelhead"><span>Translation</span><button class="small-action" id="copyBtn">▢ Copy</button></div><div id="translatedText" class="output empty" aria-live="polite">Your translation will appear here…</div><div class="panelhead" style="border-top:1px solid #edf0f7;border-bottom:0"><span id="resultLang">Tamil result</span><span>✦ LinguaBridge</span></div></section>
+</div>
+<div class="bottomrow"><span class="hint">🌐 Free translation service · Internet connection required</span><div class="actions"><button class="btn btn-secondary" id="clearAllBtn">Reset</button><button class="btn btn-primary" id="translateBtn">✦ Translate text</button></div></div>
+<div id="status" class="status" role="status"></div>
+</main>
+<section class="below">
+<div class="feature"><div class="featureicon">🌍</div><h3>Multiple languages</h3><p>Translate between a selection of popular world languages, including Indian languages.</p></div>
+<div class="feature"><div class="featureicon">⚡</div><h3>Easy to use</h3><p>A clean, responsive interface that works on phones, tablets, and desktop screens.</p></div>
+<div class="feature"><div class="featureicon">🔒</div><h3>Simple and transparent</h3><p>Uses a third-party free translation endpoint. Avoid entering private or sensitive information.</p></div>
+</section>
+<footer class="footer">AI Multilingual Information Access System · Student Project Demo<br>Translation is provided by the MyMemory service and may not always be fully accurate.</footer>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const flags={en:"🇬🇧",ta:"🇮🇳",hi:"🇮🇳",te:"🇮🇳",ml:"🇮🇳",kn:"🇮🇳",bn:"🇮🇳",fr:"🇫🇷",es:"🇪🇸",de:"🇩🇪",it:"🇮🇹",pt:"🇵🇹",ar:"🇸🇦",ja:"🇯🇵",zh:"🇨🇳",ru:"🇷🇺"};
+const languageName=code=>({en:"English",ta:"Tamil",hi:"Hindi",te:"Telugu",ml:"Malayalam",kn:"Kannada",bn:"Bengali",fr:"French",es:"Spanish",de:"German",it:"Italian",pt:"Portuguese",ar:"Arabic",ja:"Japanese",zh:"Chinese",ru:"Russian"}[code]||code);
+function updateLabels(){$("flagFrom").textContent=flags[$("fromLang").value]||"🌐";$("flagTo").textContent=flags[$("toLang").value]||"🌐";$("resultLang").textContent=languageName($("toLang").value)+" result";$("charCount").textContent=$("sourceText").value.length+" / 4500 characters"}
+$("sourceText").addEventListener("input",updateLabels);$("fromLang").addEventListener("change",updateLabels);$("toLang").addEventListener("change",updateLabels);
+$("swapBtn").addEventListener("click",()=>{const a=$("fromLang").value;$("fromLang").value=$("toLang").value;$("toLang").value=a;const source=$("sourceText").value;const out=$("translatedText");if(!out.classList.contains("empty")&&out.textContent!=="Translation failed. Please try again."){$("sourceText").value=out.textContent;out.textContent=source;}updateLabels();$("status").textContent="Languages swapped."});
+$("clearBtn").addEventListener("click",()=>{$("sourceText").value="";updateLabels();$("status").textContent="Input cleared.";$("sourceText").focus()});
+$("clearAllBtn").addEventListener("click",()=>{$("sourceText").value="";$("translatedText").textContent="Your translation will appear here…";$("translatedText").classList.add("empty");$("status").textContent="";updateLabels()});
+$("sampleBtn").addEventListener("click",()=>{$("sourceText").value="Education and information should be accessible to everyone, regardless of the language they speak.";updateLabels();$("status").textContent="Sample text added."});
+$("copyBtn").addEventListener("click",async()=>{const t=$("translatedText").textContent;if($("translatedText").classList.contains("empty")){$("status").textContent="Translate some text first.";return}try{await navigator.clipboard.writeText(t);$("status").textContent="Translation copied to clipboard."}catch(e){$("status").textContent="Copy is unavailable in this browser. Select the translated text to copy it."}});
+$("translateBtn").addEventListener("click",async()=>{const q=$("sourceText").value.trim();if(!q){$("status").textContent="Please enter some text to translate.";return}if($("fromLang").value===$("toLang").value){$("translatedText").textContent=q;$("translatedText").classList.remove("empty");$("status").textContent="Source and target languages are the same.";return}
+const btn=$("translateBtn");btn.disabled=true;btn.textContent="Translating…";$("status").textContent="Connecting to the free translation service…";
+try{const pair=$("fromLang").value+"|"+$("toLang").value;const url="https://api.mymemory.translated.net/get?q="+encodeURIComponent(q)+"&langpair="+encodeURIComponent(pair);const response=await fetch(url);if(!response.ok)throw new Error("Network response was not successful");const data=await response.json();if(data.responseStatus!==200||!data.responseData?.translatedText)throw new Error(data.responseDetails||"No translation returned");$("translatedText").textContent=data.responseData.translatedText;$("translatedText").classList.remove("empty");$("status").textContent="Translation complete. Please review the result for accuracy."}
+catch(error){$("translatedText").textContent="Translation failed. Please try again.";$("translatedText").classList.add("empty");$("status").textContent="Could not reach the translation service. Check your internet connection or try again later."}
+finally{btn.disabled=false;btn.textContent="✦ Translate text"}});
+updateLabels();
+</script>
+</body>
+</html>
